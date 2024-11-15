@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
-const productsRouter = require('./routes/users');
+const productsRouter = require('./routes/products');
 const products = require('./products.json');
 
 app.set('view engine','ejs')
+app.use(express.json());
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
 app.use('/products', productsRouter);
-
 app.get('/',logger,(req,res)=>{
   res.render('index');
 })
@@ -19,14 +19,26 @@ app.get('/admin',checkAuth,(req,res)=>{
 app.get('/search',(req,res)=>{
 
   const category = req.query.category ? req.query.category : '';
-  let maxPrice = req.query.maxPrice ? req.query.maxPrice : null;
-  if(!isNaN(maxPrice)){
+  let maxPrice = req.query.maxPrice ? parseFloat(req.query.maxPrice) : null;
+  let minPrice = req.query.minPrice ? parseFloat(req.query.minPrice) : null;
+  const supplier = req.query.supplier ? req.query.supplier : '';
+
+  if(maxPrice && isNaN(maxPrice)){
     maxPrice = null
   }
+  if(minPrice && isNaN(minPrice)){
+    minPrice = null
+  }
   const filteredProducts = products.filter((product)=>{
-    const categoryMatch = category ? product.category.toLowerCase() === category.toLowerCase() : true;
-    const priceMatch = maxPrice ? product.unitPrice <= maxPrice : true;
-    return categoryMatch && priceMatch;
+    const categoryMatch = category ?
+        product.category && product.category.toLowerCase() === category.toLowerCase() : true;
+
+    const priceMaxMatch = maxPrice ? product.unitPrice <= maxPrice : true;
+    const priceMinMatch = minPrice ? product.unitPrice >= minPrice : true;
+
+    const supplierMatch = supplier ?
+        product.supplier && product.supplier.toLowerCase() === supplier.toLowerCase() : true;
+    return categoryMatch && priceMaxMatch && priceMinMatch && supplierMatch;
   })
   res.json(filteredProducts);
 })

@@ -1,28 +1,19 @@
 [
   {
-    "id": 1,
-    "name": "Wireless Keyboard",
-    "category": "Electronics",
-    "quantity": 50,
-    "unitPrice": 29.99,
-    "dateAdded": "2024-11-10",
-    "supplier": "Tech Corp"
-  },
-  {
     "id": 2,
-    "name": "Yoga Mat",
-    "category": "Fitness",
+    "name": "Gaming Mouse PATCH",
+    "category": "Electronics",
     "quantity": 30,
-    "unitPrice": 15.99,
-    "dateAdded": "2024-10-22",
-    "supplier": "FitPro"
+    "unitPrice": 49.99,
+    "dateAdded": "2024-11-15",
+    "supplier": "Gadget World"
   },
   {
     "id": 3,
     "name": "Gaming Mouse",
     "category": "Electronics",
     "quantity": 70,
-    "unitPrice": 45.50,
+    "unitPrice": 45.5,
     "dateAdded": "2024-09-14",
     "supplier": "Game Gear"
   },
@@ -31,7 +22,7 @@
     "name": "LED Desk Lamp",
     "category": "Home & Office",
     "quantity": 120,
-    "unitPrice": 22.00,
+    "unitPrice": 22,
     "dateAdded": "2024-11-01",
     "supplier": "Home Bright"
   },
@@ -88,5 +79,32 @@
     "unitPrice": 199.99,
     "dateAdded": "2024-10-15",
     "supplier": "SmartTech"
+  },
+  {
+    "id": 11
+  },
+  {
+    "id": 12
+  },
+  {
+    "id": 13
+  },
+  {
+    "id": 14
+  },
+  {
+    "id": 15
+  },
+  {
+    "id": 16
+  },
+  {
+    "id": 17,
+    "name": "Gaming Mouse",
+    "category": "Electronics",
+    "quantity": 30,
+    "unitPrice": 49.99,
+    "dateAdded": "2024-11-15",
+    "supplier": "Gadget World"
   }
 ]
